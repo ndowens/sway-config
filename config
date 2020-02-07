@@ -1,0 +1,63 @@
+# SwayWM global configuration. For detailed information type "man sway"
+# Author: Oscar Carballal Prego <oscar.carballal@protonmail.com>
+
+###############################################################################
+# TODO:
+#   + Sway:
+#      - Autoassign workspaces to certain applications
+#      - Unlock keychain after login
+#      -
+#   + SwayBar:
+#     - Show language layout for currently used keyboard
+###############################################################################
+
+# Main definitions
+
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Your preferred terminal emulator
+set $term st
+# Your preferred application launcher
+set $menu dmenu_run
+# Default wallpaper
+set $wallpaper ~/.config/sway/images/wallpaper.jpg
+# Default lockscreen background
+set $lockscreenbg ~/.config/sway/images/lockscreen_background.png
+
+# Remove all borders from applications
+default_border none
+
+# Stablish gaps between windows and from the screen edge
+gaps inner 10
+gaps outer 5
+
+# Start a terminal
+bindsym $mod+Return exec st 
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+d exec dmenu_run 
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+# Reload the configuration file. Be aware that some changes might need
+# a session logout (gaps, for example)
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+exec swayidle -w \
+    timeout 600 'swaylock -f -i $lockscreenbg' \
+    timeout 900 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -i $lockscreenbg'
+
+include ~/.config/sway/config.d/*

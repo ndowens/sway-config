@@ -1,0 +1,32 @@
+# SwayWM input configuration. For detailed information type "man sway-input"
+# For a list of devices run: swaymsg -t get_inputs
+# Author: Oscar Carballal Prego <oscar.carballal@protonmail.com>
+
+##########################
+# Dell XPS 13 9370
+##########################
+input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input "1241:8211:daskeyboard" {
+    xkb_layout us,es,us(dvorak),es(dvorak)
+    xkb_options grp:alt_shift_toggle
+}
+
+#########################
+# Lenovo Yoga 730 13IKB
+#########################
+
+input "1739:32655:MSFT0001:02_06CB:7F8F_Touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us,es,us(dvorak),es(dvorak)
+    xkb_options grp:alt_shift_toggle
+}
