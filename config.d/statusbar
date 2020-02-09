@@ -5,7 +5,6 @@ bar {
     position top
     font "Terminus (TTF)"
     status_command while ~/.config/sway/scripts/sway_bar.sh; do sleep 1; done
-
     colors {
         statusline #ffffff
         background #000000AA
