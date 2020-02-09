@@ -61,3 +61,4 @@ exec swayidle -w \
     before-sleep 'swaylock -f -i $lockscreenbg'
 
 include ~/.config/sway/config.d/*
+input * xkb_numlock enable
